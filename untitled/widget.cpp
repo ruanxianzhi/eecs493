@@ -45,7 +45,7 @@ void Tetrahedron::draw()
     glActiveTexture(GL_TEXTURE0);
     glEnable(GL_TEXTURE_2D);
     //QMovie *movie = new QMovie("/Users/muyidi/Desktop/untitled/image/3.gif");
-    texture = bindTexture(QImage("/Users/muyidi/Desktop/untitled/image/3.gif"));
+    texture = bindTexture(QImage(":/image/3.gif"));
     //movie->start();
     glBegin(GL_QUADS);
           // Top face (y = 0.1f)
@@ -58,7 +58,7 @@ void Tetrahedron::draw()
     glDisable(GL_TEXTURE_2D);
 
     glEnable(GL_TEXTURE_2D);
-    texture = bindTexture(QImage("/Users/muyidi/Desktop/untitled/image/7.png"));
+    texture = bindTexture(QImage(":/image/modified.png"));
 
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
