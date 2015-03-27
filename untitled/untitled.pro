@@ -14,9 +14,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        widget.cpp \
+    chess.cpp \
+    party.cpp \
+    game.cpp
 
+<<<<<<< HEAD
+HEADERS  += widget.h \
+    chess.h \
+    global.h \
+    party.h \
+    game.h
+=======
 HEADERS  += widget.h
 
 RESOURCES += \
     image.qrc
+>>>>>>> origin/master

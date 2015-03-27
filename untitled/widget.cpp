@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cstdio>
 #include <QMovie>
+#include "game.h"
+
+extern QTimer* timer;
 
 Tetrahedron::Tetrahedron(QWidget *parent)
     : QGLWidget(parent)
@@ -43,6 +46,8 @@ void Tetrahedron::draw()
 
     //setStyleSheet("background-image: /Users/muyidi/Desktop/untitled/image/7.png;");
     glActiveTexture(GL_TEXTURE0);
+<<<<<<< HEAD
+=======
     glEnable(GL_TEXTURE_2D);
     //QMovie *movie = new QMovie("/Users/muyidi/Desktop/untitled/image/3.gif");
     texture = bindTexture(QImage(":/image/3.gif"));
@@ -56,6 +61,7 @@ void Tetrahedron::draw()
           glTexCoord2f(0.0, 1.0);glVertex2f(5.0f, -5.0f);
     glEnd();
     glDisable(GL_TEXTURE_2D);
+>>>>>>> origin/master
 
     glEnable(GL_TEXTURE_2D);
     texture = bindTexture(QImage(":/image/modified.png"));
@@ -71,7 +77,7 @@ void Tetrahedron::draw()
     glRotatef(rotationX, 1.0, 0.0, 0.0);
     glRotatef(rotationY, 0.0, 1.0, 0.0);
     glRotatef(rotationZ, 0.0, 0.0, 1.0);
-
+//------------------------------------------
     glBegin(GL_QUADS);
           // Top face (y = 0.1f)
           qglColor(Qt::white);
@@ -79,10 +85,7 @@ void Tetrahedron::draw()
           glTexCoord2f(1.0, 0.0);glVertex3f(-1.0f, 0.1f, -1.0f);
           glTexCoord2f(1.0, 1.0);glVertex3f(-1.0f, 0.1f,  1.0f);
           glTexCoord2f(0.0, 1.0);glVertex3f( 1.0f, 0.1f,  1.0f);
-    glEnd();
-    glDisable(GL_TEXTURE_2D);
 
-    glBegin(GL_QUADS);
           // Bottom face (y = -0.1f)
           qglColor(Qt::white);
           glVertex3f( 1.0f, -0.1f,  1.0f);
@@ -142,6 +145,21 @@ void Tetrahedron::draw()
           glVertex3f(1.0f, -0.1f,  0.0f);
           glVertex3f(1.0f, -0.1f, -1.0f);
        glEnd();  // End of drawing color-cube
+  //--------------------------------------------
+       glBegin(GL_QUADS);
+             // Top face (y = 0.1f)
+
+             qglColor(Qt::white);
+             glTexCoord2f(0.0, 0.0);glVertex3f( 0.2f, 0.11f, 0.1f);
+             glTexCoord2f(1.0, 0.0);glVertex3f(0.1f, 0.11f, 0.1f);
+             glTexCoord2f(1.0, 1.0);glVertex3f(0.1f, 0.11f,  0.2f);
+             glTexCoord2f(0.0, 1.0);glVertex3f( 0.2f, 0.11f,  0.2f);
+             //connect(timer, SIGNAL(timeout()), this, SLOT(move()));
+
+             game *newgame = new game(1,1);
+             newgame->init();
+       glEnd();
+       glDisable(GL_TEXTURE_2D);
 }
 
 void Tetrahedron::mousePressEvent(QMouseEvent *event)
