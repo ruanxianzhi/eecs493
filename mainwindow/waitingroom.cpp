@@ -8,10 +8,16 @@ waitingroom::waitingroom(QWidget *parent) :
     ui(new Ui::waitingroom)
 {
     ui->setupUi(this);
-    setStyleSheet("waitingroom {background-image:url(:/image/wt_meitu_1.jpg)}");
+
+    fnt.setFamily("HanziPen SC");
+    setStyleSheet("waitingroom {background-image:url(:/image/tablenwait.png)}");
     this->setFixedSize(900,600);
     //ui->openGLWidget->show();
-
+    ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: QColor(189,202,242,000);font-family:HanziPen SC;font-size:32;border: none;}");
+    ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color :QColor(189,202,242,000);border:none;}");
+    ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->setFrameShape(QFrame::NoFrame);
 
     red = ui->pushButton_2;
     blue = ui->pushButton_3;
@@ -20,8 +26,10 @@ waitingroom::waitingroom(QWidget *parent) :
     leave = ui->pushButton;
     QPalette pal;
     pal.setColor(QPalette::Base, QColor(235,241,184));
+    pal.setBrush(this->backgroundRole(),QBrush(QPixmap("images/tableback.jpg")) );
     pal.setColor(QPalette::AlternateBase, QColor(184,235,241));
     ui->tableWidget->setPalette(pal);
+    ui->tableWidget->setFrameShape(QFrame::NoFrame);
     ui->tableWidget->setAlternatingRowColors(true);
 }
 
@@ -31,16 +39,21 @@ waitingroom::~waitingroom()
 }
 
 bool waitingroom::updateUser(QString userName,QString localHostName,QString ipAddress){
-    bool bb = ui->tableWidget->findItems(localHostName,Qt::MatchExactly).isEmpty();
+    bool bb = ui->tableWidget->findItems(userName,Qt::MatchExactly).isEmpty();
     if(bb)
     {
         QTableWidgetItem *user = new QTableWidgetItem(userName);
-        QTableWidgetItem *host = new QTableWidgetItem(localHostName);
+        //QTableWidgetItem *host = new QTableWidgetItem(localHostName);
         //user->setBackgroundColor(QColor(184,235,241));
         //host->setBackgroundColor(QColor(184,235,241));
+
+        fnt.setPointSize(22);
         ui->tableWidget->insertRow(0);
         ui->tableWidget->setItem(0,0,user);
-        ui->tableWidget->setItem(0,1,host);
+        ui->tableWidget->item(0,0)->setFont(fnt);
+        ui->tableWidget->item(0,0)->setTextAlignment(Qt::AlignCenter);
+        //ui->tableWidget->setItem(0,1,host);
+        //ui->tableWidget->item(0,1)->setFont(fnt);
     }
     return bb;
 }

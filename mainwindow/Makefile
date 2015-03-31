@@ -575,9 +575,11 @@ qrc_image.cpp: image.qrc \
 		image/6.jpeg \
 		image/11159.jpg \
 		image/front.png \
+		image/tablenwait.png \
 		image/1.jpg \
 		image/addplane.png \
 		image/wt_meitu_1.jpg \
+		image/tableback.jpg \
 		image/3.gif \
 		image/7.png
 	/Users/xianzhiruan/Qt/5.4/clang_64/bin/rcc -name image image.qrc -o qrc_image.cpp
@@ -1194,7 +1196,9 @@ waitingroom.o: waitingroom.cpp waitingroom.h \
 		../../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
 		ui_waitingroom.h \
 		../../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
+		../../../Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
+		../../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QOpenGLWidget \
+		../../../Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qopenglwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o waitingroom.o waitingroom.cpp
 
 network.o: network.cpp network.h \

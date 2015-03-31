@@ -48,26 +48,19 @@ public:
 "border-width: 5px;\n"
 "border-radius: 15px;"));
         tableWidget = new QTableWidget(waitingroom);
-        if (tableWidget->columnCount() < 2)
-            tableWidget->setColumnCount(2);
-        QBrush brush(QColor(102, 102, 255, 255));
-        brush.setStyle(Qt::SolidPattern);
+        if (tableWidget->columnCount() < 1)
+            tableWidget->setColumnCount(1);
         QFont font;
-        font.setPointSize(18);
-        font.setBold(true);
-        font.setWeight(75);
+        font.setFamily(QStringLiteral("HanziPen SC"));
+        font.setPointSize(36);
+        font.setBold(false);
+        font.setWeight(50);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         __qtablewidgetitem->setFont(font);
-        __qtablewidgetitem->setBackground(QColor(102, 204, 255));
-        __qtablewidgetitem->setForeground(brush);
+        __qtablewidgetitem->setBackground(QColor(102, 204, 255, 23));
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        __qtablewidgetitem1->setFont(font);
-        __qtablewidgetitem1->setBackground(QColor(102, 204, 255));
-        __qtablewidgetitem1->setForeground(brush);
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(590, 30, 220, 351));
+        tableWidget->setGeometry(QRect(520, 40, 231, 351));
         tableWidget->setStyleSheet(QStringLiteral("background-color: QColor(189,202,242, 054);"));
         red = new QLabel(waitingroom);
         red->setObjectName(QStringLiteral("red"));
@@ -127,8 +120,6 @@ public:
         pushButton->setText(QApplication::translate("waitingroom", "Leave", 0));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("waitingroom", "User name", 0));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("waitingroom", "Host name", 0));
         red->setText(QApplication::translate("waitingroom", "No Player", 0));
         label_2->setText(QApplication::translate("waitingroom", "No Player", 0));
         label_3->setText(QApplication::translate("waitingroom", "No Player", 0));

@@ -22,6 +22,7 @@ public:
     QPushButton *green;
     QPushButton *yellow;
     QPushButton *leave;
+    QFont fnt;
 
 };
 

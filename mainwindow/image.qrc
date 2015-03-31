@@ -13,5 +13,7 @@
         <file>image/cutgrass.png</file>
         <file>image/blue.png</file>
         <file>image/wt_meitu_1.jpg</file>
+        <file>image/tableback.jpg</file>
+        <file>image/tablenwait.png</file>
     </qresource>
 </RCC>
