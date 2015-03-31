@@ -55,14 +55,25 @@ public:
         tableWidget = new QTableWidget(waitingroom);
         if (tableWidget->columnCount() < 2)
             tableWidget->setColumnCount(2);
+        QBrush brush(QColor(102, 102, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        QFont font;
+        font.setPointSize(18);
+        font.setBold(true);
+        font.setWeight(75);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        __qtablewidgetitem->setBackground(QColor(153, 242, 226));
+        __qtablewidgetitem->setFont(font);
+        __qtablewidgetitem->setBackground(QColor(102, 204, 255));
+        __qtablewidgetitem->setForeground(brush);
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        __qtablewidgetitem1->setFont(font);
+        __qtablewidgetitem1->setBackground(QColor(102, 204, 255));
+        __qtablewidgetitem1->setForeground(brush);
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(590, 30, 221, 351));
-        tableWidget->setStyleSheet(QStringLiteral("background-color: transparent;"));
+        tableWidget->setGeometry(QRect(590, 30, 220, 351));
+        tableWidget->setStyleSheet(QStringLiteral("background-color: QColor(189,202,242, 054);"));
 
         retranslateUi(waitingroom);
 

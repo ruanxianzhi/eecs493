@@ -9,7 +9,11 @@ waitingroom::waitingroom(QWidget *parent) :
     ui->setupUi(this);
     setStyleSheet("waitingroom {background-image:url(:/image/wt_meitu_1.jpg)}");
     this->setFixedSize(900,600);
-
+    QPalette pal;
+    pal.setColor(QPalette::Base, QColor(235,241,184));
+    pal.setColor(QPalette::AlternateBase, QColor(184,235,241));
+    ui->tableWidget->setPalette(pal);
+    ui->tableWidget->setAlternatingRowColors(true);
 }
 
 waitingroom::~waitingroom()
@@ -23,8 +27,8 @@ bool waitingroom::updateUser(QString userName,QString localHostName,QString ipAd
     {
         QTableWidgetItem *user = new QTableWidgetItem(userName);
         QTableWidgetItem *host = new QTableWidgetItem(localHostName);
-        user->setBackgroundColor(QColor(184,235,241));
-        host->setBackgroundColor(QColor(184,235,241));
+        //user->setBackgroundColor(QColor(184,235,241));
+        //host->setBackgroundColor(QColor(184,235,241));
         ui->tableWidget->insertRow(0);
         ui->tableWidget->setItem(0,0,user);
         ui->tableWidget->setItem(0,1,host);

@@ -69,28 +69,67 @@ border-radius: 15px;</string>
     <rect>
      <x>590</x>
      <y>30</y>
-     <width>221</width>
+     <width>220</width>
      <height>351</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: transparent;</string>
+    <string notr="true">background-color: QColor(189,202,242, 054);</string>
    </property>
    <column>
     <property name="text">
      <string>User name</string>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="background">
      <color>
-      <red>153</red>
-      <green>242</green>
-      <blue>226</blue>
+      <red>102</red>
+      <green>204</green>
+      <blue>255</blue>
      </color>
+    </property>
+    <property name="foreground">
+     <brush brushstyle="SolidPattern">
+      <color alpha="255">
+       <red>102</red>
+       <green>102</green>
+       <blue>255</blue>
+      </color>
+     </brush>
     </property>
    </column>
    <column>
     <property name="text">
      <string>Host name</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="background">
+     <color>
+      <red>102</red>
+      <green>204</green>
+      <blue>255</blue>
+     </color>
+    </property>
+    <property name="foreground">
+     <brush brushstyle="SolidPattern">
+      <color alpha="255">
+       <red>102</red>
+       <green>102</green>
+       <blue>255</blue>
+      </color>
+     </brush>
     </property>
    </column>
   </widget>
