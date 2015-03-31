@@ -23,6 +23,8 @@ bool waitingroom::updateUser(QString userName,QString localHostName,QString ipAd
     {
         QTableWidgetItem *user = new QTableWidgetItem(userName);
         QTableWidgetItem *host = new QTableWidgetItem(localHostName);
+        user->setBackgroundColor(QColor(184,235,241));
+        host->setBackgroundColor(QColor(184,235,241));
         ui->tableWidget->insertRow(0);
         ui->tableWidget->setItem(0,0,user);
         ui->tableWidget->setItem(0,1,host);

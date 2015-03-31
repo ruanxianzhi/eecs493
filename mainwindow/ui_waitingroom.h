@@ -56,11 +56,13 @@ public:
         if (tableWidget->columnCount() < 2)
             tableWidget->setColumnCount(2);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setBackground(QColor(153, 242, 226));
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(600, 30, 201, 351));
+        tableWidget->setGeometry(QRect(590, 30, 221, 351));
+        tableWidget->setStyleSheet(QStringLiteral("background-color: transparent;"));
 
         retranslateUi(waitingroom);
 

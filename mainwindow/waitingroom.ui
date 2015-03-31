@@ -67,15 +67,25 @@ border-radius: 15px;</string>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>590</x>
      <y>30</y>
-     <width>201</width>
+     <width>221</width>
      <height>351</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;</string>
    </property>
    <column>
     <property name="text">
      <string>User name</string>
+    </property>
+    <property name="background">
+     <color>
+      <red>153</red>
+      <green>242</green>
+      <blue>226</blue>
+     </color>
     </property>
    </column>
    <column>
