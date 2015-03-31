@@ -64,18 +64,25 @@ border-radius: 15px;</string>
     <string notr="true">background-color: transparent;</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableView_2">
+  <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>50</y>
-     <width>131</width>
-     <height>361</height>
+     <x>600</x>
+     <y>30</y>
+     <width>201</width>
+     <height>351</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
+   <column>
+    <property name="text">
+     <string>User name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Host name</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

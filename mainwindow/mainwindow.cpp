@@ -10,8 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setStyleSheet("MainWindow {background-image:url(:/image/blue.png)}");
     this->setFixedSize(900,600);
-
-
+    waitui = new waitingroom;
 
 }
 
@@ -25,7 +24,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     this->hide();
-    waitui.show();
-    waitui.exec();
-    //this->show();
+    waitui->show();
+    n = new netWork(waitui);
+    waitui->exec();
 }

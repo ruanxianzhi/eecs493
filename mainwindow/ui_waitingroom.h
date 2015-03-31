@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'waitingroom.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -17,6 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,7 +27,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QTableView *tableView;
-    QTableView *tableView_2;
+    QTableWidget *tableWidget;
 
     void setupUi(QDialog *waitingroom)
     {
@@ -51,10 +52,15 @@ public:
         tableView->setObjectName(QStringLiteral("tableView"));
         tableView->setGeometry(QRect(150, 60, 361, 311));
         tableView->setStyleSheet(QStringLiteral("background-color: transparent;"));
-        tableView_2 = new QTableView(waitingroom);
-        tableView_2->setObjectName(QStringLiteral("tableView_2"));
-        tableView_2->setGeometry(QRect(590, 50, 131, 361));
-        tableView_2->setStyleSheet(QStringLiteral(""));
+        tableWidget = new QTableWidget(waitingroom);
+        if (tableWidget->columnCount() < 2)
+            tableWidget->setColumnCount(2);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(600, 30, 201, 351));
 
         retranslateUi(waitingroom);
 
@@ -66,6 +72,10 @@ public:
         waitingroom->setWindowTitle(QApplication::translate("waitingroom", "Dialog", 0));
         pushButton->setText(QApplication::translate("waitingroom", "Leave", 0));
         pushButton_2->setText(QApplication::translate("waitingroom", "Ready", 0));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("waitingroom", "User name", 0));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("waitingroom", "Host name", 0));
     } // retranslateUi
 
 };

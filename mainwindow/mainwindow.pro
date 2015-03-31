@@ -7,6 +7,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += network
 
 TARGET = mainwindow
 TEMPLATE = app
@@ -14,10 +15,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    waitingroom.cpp
+    waitingroom.cpp \
+    network.cpp
 
 HEADERS  += mainwindow.h \
-    waitingroom.h
+    waitingroom.h \
+    network.h
 FORMS    += mainwindow.ui\
     waitingroom.ui
 RESOURCES += \

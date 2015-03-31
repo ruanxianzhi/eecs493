@@ -14,9 +14,8 @@ class waitingroom : public QDialog
 public:
     explicit waitingroom(QWidget *parent = 0);
     ~waitingroom();
-
-private:
     Ui::waitingroom *ui;
+    bool updateUser(QString userName,QString localHostName,QString ipAddress);
 };
 
 #endif // WAITINGROOM_H
