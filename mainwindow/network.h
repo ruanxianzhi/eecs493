@@ -9,7 +9,7 @@ namespace Ui {
     class Widget;
 }
 
-enum MessageType{Message,NewParticipant,ParticipantLeft};
+enum MessageType{Message,NewParticipant,ParticipantLeft,Choosecolor};
 
 class netWork : public QWidget
 {
@@ -21,7 +21,7 @@ public:
     QString getUserName();
 
 protected:
-    void sendMessage(MessageType type,QString serverAddress="");
+    void sendMessage(MessageType type,QString colortype = "");
     void newParticipant(QString userName,QString localHostName,QString ipAddress);
     void participantLeft(QString userName,QString localHostName,QString time);
 
@@ -30,9 +30,18 @@ private:
     qint16 port;
     QString getIP();
     waitingroom *waitingroomPtr;
+    QString reduser;
+    QString blueuser;
+    QString yellowuser;
+    QString greenuser;
+    QString mycolor;
 
 private slots:
     void processPendingDatagrams();
+    void chooseredcolor();
+    void choosebluecolor();
+    void choosegreencolor();
+    void chooseyellowcolor();
 
 };
 

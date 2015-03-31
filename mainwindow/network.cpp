@@ -7,10 +7,21 @@ netWork::netWork(waitingroom *wr, QWidget *parent) :
     waitingroomPtr = wr;
     udpSocket = new QUdpSocket(this);
     port = 45450;
+    reduser = "";
+    blueuser = "";
+    greenuser = "";
+    yellowuser = "";
+    mycolor = "";
     udpSocket->bind(port,QUdpSocket::ShareAddress
                                     | QUdpSocket::ReuseAddressHint);
     connect(udpSocket,SIGNAL(readyRead()),this,SLOT(processPendingDatagrams()));
     sendMessage(NewParticipant);
+    connect(waitingroomPtr->blue,SIGNAL(clicked()),this,SLOT(choosebluecolor()));
+    connect(waitingroomPtr->red,SIGNAL(clicked()),this,SLOT(chooseredcolor()));
+    connect(waitingroomPtr->yellow,SIGNAL(clicked()),this,SLOT(chooseyellowcolor()));
+    connect(waitingroomPtr->green,SIGNAL(clicked()),this,SLOT(choosegreencolor()));
+    //connect(waitingroomPtr->leave,SIGNAL(clicked()),this,SLOT(participantLeft()));
+
 }
 
 void netWork::processPendingDatagrams()
@@ -23,7 +34,7 @@ void netWork::processPendingDatagrams()
         QDataStream in(&datagram,QIODevice::ReadOnly);
         int messageType;
         in >> messageType;
-        QString userName,localHostName,ipAddress,message;
+        QString userName,localHostName,ipAddress,message,colortype;
         switch(messageType)
         {
             case Message:
@@ -48,6 +59,20 @@ void netWork::processPendingDatagrams()
                     //participantLeft(userName,localHostName,time);
                     break;
                 }
+            case Choosecolor:{
+                    in >> userName>>localHostName>>colortype;
+                    if (colortype == "red"){
+                        reduser = userName;
+                    }
+                    else if (colortype == "blue")
+                        blueuser = userName;
+                    else if (colortype == "green")
+                        greenuser = userName;
+
+                    else if (colortype == "yellow")
+                        yellowuser = userName;
+                    waitingroomPtr->updatelabel(userName,colortype);
+            }
         }
     }
 }
@@ -58,6 +83,9 @@ void netWork::newParticipant(QString userName,QString localHostName,QString ipAd
     if(bb)
     {
         sendMessage(NewParticipant);
+        if (mycolor!=""){
+            sendMessage(Choosecolor,mycolor);
+        }
     }
 }
 
@@ -65,10 +93,8 @@ void netWork::participantLeft(QString userName,QString localHostName,QString tim
 {
     /*int rowNum = ui->tableWidget->findItems(localHostName,Qt::MatchExactly).first()->row();
     ui->tableWidget->removeRow(rowNum);
-    ui->textBrowser->setTextColor(Qt::gray);
-    ui->textBrowser->setCurrentFont(QFont("Times New Roman",10));
-    ui->textBrowser->append(tr("%1 left at %2").arg(userName).arg(time));
-    ui->onlineUser->setText(tr("current user: %1").arg(ui->tableWidget->rowCount()));*/
+    */
+
 }
 
 netWork::~netWork()
@@ -89,7 +115,7 @@ QString netWork::getIP()
        return 0;
 }
 
-void netWork::sendMessage(MessageType type, QString serverAddress)  //发送信息
+void netWork::sendMessage(MessageType type, QString colortype)  //发送信息
 {
     QByteArray data;
     QDataStream out(&data,QIODevice::WriteOnly);
@@ -123,6 +149,11 @@ void netWork::sendMessage(MessageType type, QString serverAddress)  //发送信�
                break;
 
             }
+        case Choosecolor :
+            {
+                out << colortype;
+                break;
+            }
     }
     udpSocket->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
 
@@ -151,3 +182,44 @@ QString netWork::getUserName()
     return false;
 }
 
+void netWork::chooseredcolor(){
+    //waitingroomPtr->updatelabel(userName,'r');
+    if (reduser == "" && mycolor == ""){
+
+            waitingroomPtr->updatelabel(getUserName(),"red");
+            sendMessage(Choosecolor,"red");
+            mycolor = "red";
+            reduser = getUserName();
+     }
+}
+
+void netWork::choosebluecolor(){
+    //waitingroomPtr->updatelabel(userName,'r');
+    if(blueuser == "" && mycolor == ""){
+            waitingroomPtr->updatelabel(getUserName(),"blue");
+            sendMessage(Choosecolor,"blue");
+            mycolor = "blue";
+            blueuser = getUserName();
+    }
+
+}
+void netWork::choosegreencolor(){
+    //waitingroomPtr->updatelabel(userName,'r');
+    if (greenuser == "" && mycolor == ""){
+             waitingroomPtr->updatelabel(getUserName(),"green");
+             sendMessage(Choosecolor,"green");
+             greenuser = getUserName();
+             mycolor = "green";
+    }
+
+}
+void netWork::chooseyellowcolor(){
+    //waitingroomPtr->updatelabel(userName,'r');
+    if (yellowuser == "" && mycolor == ""){
+            waitingroomPtr->updatelabel(getUserName(),"yellow");
+            sendMessage(Choosecolor,"yellow");
+            yellowuser = getUserName();
+            mycolor = "yellow";
+    }
+
+}

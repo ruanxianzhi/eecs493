@@ -16,6 +16,13 @@ public:
     ~waitingroom();
     Ui::waitingroom *ui;
     bool updateUser(QString userName,QString localHostName,QString ipAddress);
+    void updatelabel(QString userName,QString color);
+    QPushButton *red;
+    QPushButton *blue;
+    QPushButton *green;
+    QPushButton *yellow;
+    QPushButton *leave;
+
 };
 
 #endif // WAITINGROOM_H

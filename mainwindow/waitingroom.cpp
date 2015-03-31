@@ -1,6 +1,7 @@
 #include "waitingroom.h"
 #include "ui_waitingroom.h"
 #include <QDebug>
+#include <QOpenGLWidget>
 
 waitingroom::waitingroom(QWidget *parent) :
     QDialog(parent),
@@ -9,6 +10,14 @@ waitingroom::waitingroom(QWidget *parent) :
     ui->setupUi(this);
     setStyleSheet("waitingroom {background-image:url(:/image/wt_meitu_1.jpg)}");
     this->setFixedSize(900,600);
+    //ui->openGLWidget->show();
+
+
+    red = ui->pushButton_2;
+    blue = ui->pushButton_3;
+    green = ui->pushButton_4;
+    yellow = ui->pushButton_5;
+    leave = ui->pushButton;
     QPalette pal;
     pal.setColor(QPalette::Base, QColor(235,241,184));
     pal.setColor(QPalette::AlternateBase, QColor(184,235,241));
@@ -35,3 +44,18 @@ bool waitingroom::updateUser(QString userName,QString localHostName,QString ipAd
     }
     return bb;
 }
+
+void waitingroom::updatelabel(QString userName, QString color){
+    if (color == "red"){
+        ui->red->setText(userName);
+    }
+    else if (color == "blue")
+        ui->label_2->setText(userName);
+    else if (color == "green")
+        ui->label_3->setText(userName);
+
+    else if (color == "yellow")
+        ui->label_4->setText(userName);
+
+}
+
