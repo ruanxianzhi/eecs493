@@ -12,11 +12,18 @@ waitingroom::waitingroom(QWidget *parent) :
     fnt.setFamily("HanziPen SC");
     setStyleSheet("waitingroom {background-image:url(:/image/tablenwait.png)}");
     this->setFixedSize(900,600);
-    //ui->openGLWidget->show();
+    QStringList header;
+    header<<tr("User Name");
+    ui->tableWidget->setHorizontalHeaderLabels(header);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
-    ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: QColor(189,202,242,000);font-family:HanziPen SC;font-size:32;border: none;}");
+    ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: QColor(189,202,242,000);border: none;}");
     ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color :QColor(189,202,242,000);border:none;}");
     ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->horizontalHeader()->setVisible(false);
+    QFont font = ui->tableWidget->horizontalHeader()->font();
+    font.setBold(true);
+    //font.setPointSize(80);
+    ui->tableWidget->horizontalHeader()->setFont(font);
     ui->tableWidget->setFrameShape(QFrame::NoFrame);
 
     red = ui->pushButton_2;
@@ -31,6 +38,7 @@ waitingroom::waitingroom(QWidget *parent) :
     ui->tableWidget->setPalette(pal);
     ui->tableWidget->setFrameShape(QFrame::NoFrame);
     ui->tableWidget->setAlternatingRowColors(true);
+
 }
 
 waitingroom::~waitingroom()

@@ -41,29 +41,14 @@ border-radius: 15px;</string>
      <height>351</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: QColor(189,202,242, 054);</string>
    </property>
-   <column>
-    <property name="text">
-     <string>User name</string>
-    </property>
-    <property name="font">
-     <font>
-      <family>HanziPen SC</family>
-      <pointsize>36</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="background">
-     <color alpha="23">
-      <red>102</red>
-      <green>204</green>
-      <blue>255</blue>
-     </color>
-    </property>
-   </column>
   </widget>
   <widget class="QLabel" name="red">
    <property name="geometry">
