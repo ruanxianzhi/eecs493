@@ -27,6 +27,9 @@ void MainWindow::on_pushButton_clicked()
     waitui->show();
     if (!n)
         n = new netWork(waitui);
+    else
+        n->joinAgain();
     waitui->exec();
+    n->isLeft = true;
     this->show();
 }

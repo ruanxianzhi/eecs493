@@ -12,6 +12,8 @@ netWork::netWork(waitingroom *wr, QWidget *parent) :
     greenuser = "";
     yellowuser = "";
     mycolor = "";
+    isLeft = false;
+    turn = "red";
     udpSocket->bind(port,QUdpSocket::ShareAddress
                                     | QUdpSocket::ReuseAddressHint);
     connect(udpSocket,SIGNAL(readyRead()),this,SLOT(processPendingDatagrams()));
@@ -60,18 +62,19 @@ void netWork::processPendingDatagrams()
                     break;
                 }
             case Choosecolor:{
-                    in >> userName>>localHostName>>colortype;
-                    if (colortype == "red"){
-                        reduser = userName;
-                    }
-                    else if (colortype == "blue")
-                        blueuser = userName;
-                    else if (colortype == "green")
-                        greenuser = userName;
-
-                    else if (colortype == "yellow")
-                        yellowuser = userName;
-                    waitingroomPtr->updatelabel(userName,colortype);
+                in >> userName>>localHostName>>colortype;
+                if (colortype == "red"&&reduser==""){
+                    reduser = userName;
+                 }
+                 else if (colortype == "blue"&&blueuser=="")
+                    blueuser = userName;
+                 else if (colortype == "green"&&greenuser=="")
+                    greenuser = userName;
+                 else if (colortype == "yellow"&&yellowuser=="")
+                    yellowuser = userName;
+                 else break;
+                 waitingroomPtr->updatelabel(userName,colortype);
+                 tryStart();
             }
         }
     }
@@ -205,6 +208,7 @@ void netWork::chooseredcolor(){
             sendMessage(Choosecolor,"red");
             mycolor = "red";
             reduser = getUserName();
+            tryStart();
      }
 }
 
@@ -215,6 +219,7 @@ void netWork::choosebluecolor(){
             sendMessage(Choosecolor,"blue");
             mycolor = "blue";
             blueuser = getUserName();
+            tryStart();
     }
 
 }
@@ -225,6 +230,7 @@ void netWork::choosegreencolor(){
              sendMessage(Choosecolor,"green");
              greenuser = getUserName();
              mycolor = "green";
+             tryStart();
     }
 
 }
@@ -235,12 +241,28 @@ void netWork::chooseyellowcolor(){
             sendMessage(Choosecolor,"yellow");
             yellowuser = getUserName();
             mycolor = "yellow";
+            tryStart();
     }
 
 }
 void netWork::leave(){
     mycolor = "";
+    participantLeft(getUserName());
     sendMessage(ParticipantLeft);
     waitingroomPtr->close();
     //w->show();
+}
+
+void netWork::joinAgain(){
+    isLeft = false;
+    sendMessage(NewParticipant);
+}
+
+void netWork::tryStart(){
+    if (reduser!=""&&blueuser!=""&&greenuser!="")
+            gameStart();
+}
+
+void netWork::gameStart(){
+    qDebug()<<"Game Start!";
 }

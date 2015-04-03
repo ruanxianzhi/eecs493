@@ -19,6 +19,11 @@ public:
     explicit netWork(waitingroom *wr, QWidget *parent = 0);
     ~netWork();
     QString getUserName();
+    void joinAgain();
+    bool isLeft;
+    void tryStart();
+    void gameStart();
+    QString turn;//red yellow green blue
 
 protected:
     void sendMessage(MessageType type,QString colortype = "");
