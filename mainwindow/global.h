@@ -44,8 +44,9 @@ float coordinatey[80] = {-4.7, -3.3, -3.8, -3.8, -3.3, -4.6, -5.7, -6.7, -8, -8.
                         };
 
 QTimer *timer;// = new QTimer();
-QTimer *uptimer;
+//QTimer *uptimer;
 QTimer *updatetimer;
+QTimer *backtimer = new QTimer();
 
 #endif // GLOBAL_H
 

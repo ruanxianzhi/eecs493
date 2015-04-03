@@ -4,8 +4,8 @@
 #include <cmath>
 
 extern QTimer *timer;
-extern QTimer *uptimer;
 extern QTimer* updatetimer;
+extern QTimer *backtimer;
 
 chess::chess(int colornum, int order, QGLWidget *parent)
     : QGLWidget(parent)
@@ -46,6 +46,13 @@ void chess::calculatingnextone(){
 }
 
 void chess::calculatingnext(int forward){//std::cerr<<"aaa";
+    if (forward == 7) {
+            nextposition=-1;
+            nextone=-1;
+            speedx = 0.5f*(startx[color][number]-currentx);
+            speedy = 0.5f*(starty[color][number]-currenty);
+            return;
+    }
     if(state == 0){
         if(forward == 6){
             nextposition = baseaddr[color];
@@ -112,10 +119,11 @@ void chess::calculatingnext(int forward){//std::cerr<<"aaa";
                 nextposition = endpoint[color] - (forward - (endpoint[color] - position)) ;
             }
         }
-    }std::cerr<<"next"<<nextposition<<"\n";
+    }
+    std::cerr<<"next"<<nextposition<<"\n";
     if(position!=nextposition) calculatingnextone();
     else{
-        uptimer->stop();
+        updatetimer->stop();
         timer->start();
     }
 }
@@ -131,8 +139,14 @@ void chess::move(){
         position = nextone;//std::cerr<<"pos"<<position;
         if (nextone == nextposition) {
             state2 = 0;
-            updatetimer->stop();
-            timer->start();
+            if (backtimer->isActive()) {
+                backtimer->stop();
+                state = 0;
+            }
+            else {
+                updatetimer->stop();
+                timer->start();
+            }
         }
         else calculatingnextone();
     }

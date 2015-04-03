@@ -5,11 +5,12 @@
 #include "game.h"
 
 extern QTimer *timer;
-extern QTimer *uptimer;
+//extern QTimer *uptimer;
 extern QTimer *updatetimer;
+extern QTimer *backtimer;
 extern int justclicked;
 
-board::board(int player, boardWindow* windowparent,QWidget *parent)
+board::board(int player,boardWindow *windowparent, QWidget *parent)
     : QGLWidget(parent)
 {
     setFormat(QGLFormat(QGL::DoubleBuffer | QGL::DepthBuffer));
@@ -20,12 +21,14 @@ board::board(int player, boardWindow* windowparent,QWidget *parent)
     rotationZ = 0.0;
     clicked = -1;
     choose = -1;
-    newgame = new game(numplayer,1);
-    newgame->init();
     window = windowparent;
+    newgame = new game(numplayer,1);
+
+    newgame->init();
+
     timer = new QTimer();
-    timer->setInterval(10000);
-    connect(timer, SIGNAL(timeout()), this, SLOT(start()));
+    timer->setInterval(30000);
+    //connect(timer, SIGNAL(timeout()), this, SLOT(start()));
 
     timer->start();
 
@@ -171,7 +174,7 @@ void board::wait(){
     cerr<<"waiting\n";
     if(waitcount==10){
         waitcount = 0;
-        uptimer->stop();
+        //uptimer->stop();
     }
     else{
         waitcount++;
@@ -183,17 +186,20 @@ void board::start(){
         window->button[i]->setEnabled(false);
     }
     window->button[4]->setEnabled(true);
+    if(newgame->allparty[lastcolor]->isFinish()){
+        cerr<<"Finish!\n";
+    }
     if(newgame->isEnd()){
             updatetimer->stop();
             return;
     }
     timer->stop();
-    uptimer = new QTimer();
-    uptimer->start();
-    uptimer->setInterval(10000);
+//    uptimer = new QTimer();
+//    uptimer->start();
+//    uptimer->setInterval(30000);
 
             lastroll = beginroll();
-            cerr<<lastroll<<"\n";
+
             int j = 0;
             if(lastroll!=6){
                 for(int i = 0; i < 4; i++){
@@ -213,12 +219,12 @@ void board::start(){
                 j = 1;
             }
             if(j == 0){
-                uptimer->stop();
+                //uptimer->stop();
                 if(lastcolor == numplayer-1) lastcolor = 0;
                 else lastcolor++;
             }
-            connect(uptimer, SIGNAL(timeout()), this, SLOT(updateall()));
-            multi.insert(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition, newgame->allparty[lastcolor]->ownchess[justclicked]);
+            //connect(uptimer, SIGNAL(timeout()), this, SLOT(updateall()));
+
 
 }
 
@@ -227,6 +233,7 @@ void board::updateall(){
 }
 
 void board::update(int numcolor, int numstep, int whichchess){
+    cerr<<"color: "<<numcolor<<"roll: "<<numstep<<"number: "<<whichchess<<"\n";
     window->button[4]->setEnabled(false);
     chess *inchess = newgame->allparty[lastcolor]->ownchess[whichchess];
     if(numstep!=-1){
@@ -234,24 +241,31 @@ void board::update(int numcolor, int numstep, int whichchess){
     multi.remove(newgame->allparty[numcolor]->ownchess[whichchess]->position, newgame->allparty[numcolor]->ownchess[whichchess]);
 
 
-    /*          if(multi.find(newgame->allparty[lastcolor]->ownchess[0]->nextposition)!=multi.end()
-    //                    && multi.value(newgame->allparty[lastcolor]->ownchess[0]->nextposition)->getcolor()!=lastcolor)
-    //            {
-    //                QList<chess*> values = multi.values(newgame->allparty[lastcolor]->ownchess[0]->nextposition);
-    //                for(int i = 0; i < values.size(); i++){
-    //                    if(values.at(i)->getcolor()!=lastcolor){
-    //                        multi.remove(newgame->allparty[lastcolor]->ownchess[0]->nextposition, values.at(i));
-    //                        values.at(i)->calculatingnext(7);
-    //                        updateall(values.at(i));
-    //                    }
-    //                }
-                } */
+             if(multi.find(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition)!=multi.end()
+                        && multi.value(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition)->getcolor()!=lastcolor)
+                {
+                    QList<chess*> values = multi.values(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition);
+                    for(int i = 0; i < values.size(); i++){
+                        if(values.at(i)->getcolor()!=lastcolor){
+                            multi.remove(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition, values.at(i));
+                            values.at(i)->calculatingnext(7);
+
+
+                            backtimer->setInterval(100);
+                            timer->stop();
+                            backtimer->start();
+                            connect(backtimer, SIGNAL(timeout()), values.at(i), SLOT(move()));
+                            connect(backtimer, SIGNAL(timeout()), this, SLOT(updateGL()));
+                        }
+                    }
+                }
 
     if(inchess->position!=inchess->nextposition){
     updatetimer = new QTimer();
     updatetimer->setInterval(100);
     timer->stop();
     updatetimer->start();
+    multi.insert(newgame->allparty[lastcolor]->ownchess[justclicked]->nextposition, newgame->allparty[lastcolor]->ownchess[justclicked]);
     connect(updatetimer, SIGNAL(timeout()), newgame->allparty[lastcolor]->ownchess[whichchess], SLOT(move()));
     connect(updatetimer, SIGNAL(timeout()), this, SLOT(updateGL()));
     }

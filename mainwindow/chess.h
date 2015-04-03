@@ -36,7 +36,10 @@ public:
     chess(int colorint, int order, QGLWidget *parent = 0);
     ~chess();
     void draw();
-    //board *Board;
+    int getcolor(){
+        return color;
+    }
+
     void calculatingnext(int forward);
     void calculatingnextone();
 public slots:

@@ -7,14 +7,14 @@
 
 extern int justclicked;
 extern QTimer* timer;
-extern QTimer *uptimer;
+//extern QTimer *uptimer;
 boardWindow::boardWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     QSplitter *splitter = new QSplitter();
     //gameplay number
     countimer = new QTimer();
-    countimer->setInterval(1000);
+    countimer->setInterval(30000);
     board *chessboard = new board(4,this);
 
     splitter->addWidget(chessboard);
@@ -55,7 +55,7 @@ boardWindow::boardWindow(QWidget *parent)
     connect(button[1], SIGNAL(clicked()), chessboard, SLOT(updateall()));
     connect(button[2], SIGNAL(clicked()), chessboard, SLOT(updateall()));
     connect(button[3], SIGNAL(clicked()), chessboard, SLOT(updateall()));
-    connect(countimer, SIGNAL(timeout()), this, SLOT(updatelabel()));
+    //connect(countimer, SIGNAL(timeout()), this, SLOT(updatelabel()));
 
     setStyleSheet("QSplitter {background-color: rgb(219, 226, 228);}");
     QList<int> sizeList = QList<int>() << 900 << 190;
@@ -91,8 +91,8 @@ void boardWindow::choose4(){
 }
 
 void boardWindow::updatelabel(){
-    if(uptimer->isActive()){
-        timeremain->setText(QString::number(uptimer->remainingTime()));
-        innerLayout->addWidget(timeremain);
-    }
+//    if(uptimer->isActive()){
+//        timeremain->setText(QString::number(uptimer->remainingTime()));
+//        innerLayout->addWidget(timeremain);
+//    }
 }
