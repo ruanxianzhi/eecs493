@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -mmacosx-version-min=10.7 -Wall -W -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -mmacosx-version-min=10.7 -Wall -W -fPIE $(DEFINES)
-INCPATH       = -I../mainwindow -I. -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -F/Volumes/liyihan/Qt/5.4/clang_64/lib
+INCPATH       = -I../mainwindow -I. -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Versions/5/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Versions/5/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -F/Volumes/liyihan/Qt/5.4/clang_64/lib
 QMAKE         = /Volumes/liyihan/Qt/5.4/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = mainwindow1.0.0
 DISTDIR = /Users/liyihan47/Desktop/eecs493/mainwindow/.tmp/mainwindow1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -mmacosx-version-min=10.7 -Wl,-rpath,/Volumes/liyihan/Qt/5.4/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Volumes/liyihan/Qt/5.4/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework QtNetwork -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Volumes/liyihan/Qt/5.4/clang_64/lib -framework QtOpenGL -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework QtNetwork -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -396,6 +396,7 @@ Makefile: ../mainwindow/mainwindow.pro /Volumes/liyihan/Qt/5.4/clang_64/mkspecs/
 		/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/features/lex.prf \
 		../mainwindow/mainwindow.pro \
 		../mainwindow/image.qrc \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/QtOpenGL.prl \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/QtCore.prl \
@@ -531,6 +532,7 @@ Makefile: ../mainwindow/mainwindow.pro /Volumes/liyihan/Qt/5.4/clang_64/mkspecs/
 /Volumes/liyihan/Qt/5.4/clang_64/mkspecs/features/lex.prf:
 ../mainwindow/mainwindow.pro:
 ../mainwindow/image.qrc:
+/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/QtOpenGL.prl:
 /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/QtGui.prl:
 /Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -887,8 +889,14 @@ moc_mainwindow.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Ver
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qdesktopservices.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qvalidator.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qtguiversion.h \
+		../mainwindow/boardwindow.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		../mainwindow/mainwindow.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/mainwindow.h -o moc_mainwindow.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/mainwindow.h -o moc_mainwindow.cpp
 
 moc_waitingroom.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
@@ -1026,7 +1034,7 @@ moc_waitingroom.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Ve
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbutton.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtwidgetsversion.h \
 		../mainwindow/waitingroom.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/waitingroom.h -o moc_waitingroom.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/waitingroom.h -o moc_waitingroom.cpp
 
 moc_network.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
@@ -1298,8 +1306,15 @@ moc_network.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versio
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbox.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbutton.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtwidgetsversion.h \
+		../mainwindow/boardwindow.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		../mainwindow/network.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/network.h -o moc_network.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/network.h -o moc_network.cpp
 
 moc_boardwindow.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
@@ -1309,23 +1324,29 @@ moc_boardwindow.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Ve
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlayout.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbutton.h \
 		../mainwindow/boardwindow.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/boardwindow.h -o moc_boardwindow.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/boardwindow.h -o moc_boardwindow.cpp
 
 moc_chess.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcolordialog.h \
 		/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers/glu.h \
 		../mainwindow/chess.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/chess.h -o moc_chess.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/chess.h -o moc_chess.cpp
 
 moc_widget.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
@@ -1474,7 +1495,7 @@ moc_widget.cpp: /Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Version
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		../mainwindow/widget.h
-	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/widget.h -o moc_widget.cpp
+	/Volumes/liyihan/Qt/5.4/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Volumes/liyihan/Qt/5.4/clang_64/mkspecs/macx-clang -I/Users/liyihan47/Desktop/eecs493/mainwindow -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtNetwork.framework/Headers -I/Volumes/liyihan/Qt/5.4/clang_64/lib/QtCore.framework/Headers -I. -F/Volumes/liyihan/Qt/5.4/clang_64/lib ../mainwindow/widget.h -o moc_widget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1772,6 +1793,12 @@ main.o: ../mainwindow/main.cpp ../mainwindow/mainwindow.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qdesktopservices.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qvalidator.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qtguiversion.h \
+		../mainwindow/boardwindow.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../mainwindow/main.cpp
 
@@ -2048,6 +2075,12 @@ mainwindow.o: ../mainwindow/mainwindow.cpp ../mainwindow/mainwindow.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qdesktopservices.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qvalidator.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qtguiversion.h \
+		../mainwindow/boardwindow.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		../mainwindow/ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../mainwindow/mainwindow.cpp
 
@@ -2463,7 +2496,14 @@ network.o: ../mainwindow/network.cpp ../mainwindow/network.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbar.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbox.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbutton.h \
-		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtwidgetsversion.h
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtwidgetsversion.h \
+		../mainwindow/boardwindow.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLabel \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o network.o ../mainwindow/network.cpp
 
 boardwindow.o: ../mainwindow/boardwindow.cpp ../mainwindow/boardwindow.h \
@@ -2475,6 +2515,8 @@ boardwindow.o: ../mainwindow/boardwindow.cpp ../mainwindow/boardwindow.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlabel.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QLayout \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qlayout.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QToolButton \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qtoolbutton.h \
 		../mainwindow/widget.h \
@@ -2623,6 +2665,8 @@ boardwindow.o: ../mainwindow/boardwindow.cpp ../mainwindow/boardwindow.h \
 chess.o: ../mainwindow/chess.cpp ../mainwindow/chess.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
@@ -2640,6 +2684,8 @@ game.o: ../mainwindow/game.cpp ../mainwindow/game.h \
 		../mainwindow/chess.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
@@ -2783,6 +2829,8 @@ party.o: ../mainwindow/party.cpp ../mainwindow/party.h \
 		../mainwindow/chess.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \
@@ -2925,6 +2973,8 @@ party.o: ../mainwindow/party.cpp ../mainwindow/party.h \
 widget.o: ../mainwindow/widget.cpp ../mainwindow/widget.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QWidget \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/QGLWidget \
+		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtOpenGL.framework/Versions/5/Headers/qgl.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/QMouseEvent \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
 		/Volumes/liyihan/Qt/5.4/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QColorDialog \

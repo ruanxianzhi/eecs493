@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QtGui>
 #include "waitingroom.h"
+#include "boardwindow.h"
 namespace Ui {
     class Widget;
 }
@@ -23,6 +24,7 @@ public:
     bool isLeft;
     void tryStart();
     void gameStart();
+    boardWindow *bw;
     QString turn;//red yellow green blue
 
 protected:

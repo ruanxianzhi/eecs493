@@ -265,4 +265,6 @@ void netWork::tryStart(){
 
 void netWork::gameStart(){
     qDebug()<<"Game Start!";
+    bw = new boardWindow();
+    bw->show();
 }
