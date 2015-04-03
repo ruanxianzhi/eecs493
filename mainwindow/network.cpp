@@ -20,7 +20,7 @@ netWork::netWork(waitingroom *wr, QWidget *parent) :
     connect(waitingroomPtr->red,SIGNAL(clicked()),this,SLOT(chooseredcolor()));
     connect(waitingroomPtr->yellow,SIGNAL(clicked()),this,SLOT(chooseyellowcolor()));
     connect(waitingroomPtr->green,SIGNAL(clicked()),this,SLOT(choosegreencolor()));
-    //connect(waitingroomPtr->leave,SIGNAL(clicked()),this,SLOT(participantLeft()));
+    connect(waitingroomPtr->leave,SIGNAL(clicked()),this,SLOT(leave()));
 
 }
 
@@ -56,7 +56,7 @@ void netWork::processPendingDatagrams()
             case ParticipantLeft:
                 {
                     in >>userName >>localHostName;
-                    //participantLeft(userName,localHostName,time);
+                    participantLeft(userName);
                     break;
                 }
             case Choosecolor:{
@@ -89,12 +89,27 @@ void netWork::newParticipant(QString userName,QString localHostName,QString ipAd
     }
 }
 
-void netWork::participantLeft(QString userName,QString localHostName,QString time)
+void netWork::participantLeft(QString userName)
 {
-    /*int rowNum = ui->tableWidget->findItems(localHostName,Qt::MatchExactly).first()->row();
-    ui->tableWidget->removeRow(rowNum);
-    */
-
+    int rowNum = waitingroomPtr->tw->findItems(userName,Qt::MatchExactly).first()->row();
+    if (userName!=getUserName())
+        waitingroomPtr->tw->removeRow(rowNum);
+    if (yellowuser==userName){
+        yellowuser = "";
+        waitingroomPtr->updatelabel("No Player","yellow");
+    }
+    if (reduser==userName){
+        reduser = "";
+        waitingroomPtr->updatelabel("No Player","red");
+    }
+    if (blueuser==userName){
+        blueuser = "";
+        waitingroomPtr->updatelabel("No Player","blue");
+    }
+    if (greenuser==userName){
+        greenuser = "";
+        waitingroomPtr->updatelabel("No Player","green");
+    }
 }
 
 netWork::~netWork()
@@ -222,4 +237,10 @@ void netWork::chooseyellowcolor(){
             mycolor = "yellow";
     }
 
+}
+void netWork::leave(){
+    mycolor = "";
+    sendMessage(ParticipantLeft);
+    waitingroomPtr->close();
+    //w->show();
 }

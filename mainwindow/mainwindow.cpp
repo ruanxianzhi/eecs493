@@ -25,6 +25,8 @@ void MainWindow::on_pushButton_clicked()
 {
     this->hide();
     waitui->show();
-    n = new netWork(waitui);
+    if (!n)
+        n = new netWork(waitui);
     waitui->exec();
+    this->show();
 }

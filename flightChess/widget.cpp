@@ -223,11 +223,15 @@ void board::start(){
 }
 
 void board::updateall(){
+    update(lastcolor, lastroll, justclicked);
+}
+
+void board::update(int numcolor, int numstep, int whichchess){
     window->button[4]->setEnabled(false);
-    chess *inchess = newgame->allparty[lastcolor]->ownchess[justclicked];
-    if(lastroll!=-1){
-    newgame->allparty[lastcolor]->ownchess[justclicked]->calculatingnext(lastroll);
-    multi.remove(newgame->allparty[lastcolor]->ownchess[justclicked]->position, newgame->allparty[lastcolor]->ownchess[justclicked]);
+    chess *inchess = newgame->allparty[lastcolor]->ownchess[whichchess];
+    if(numstep!=-1){
+    newgame->allparty[numcolor]->ownchess[whichchess]->calculatingnext(numstep);
+    multi.remove(newgame->allparty[numcolor]->ownchess[whichchess]->position, newgame->allparty[numcolor]->ownchess[whichchess]);
 
 
     /*          if(multi.find(newgame->allparty[lastcolor]->ownchess[0]->nextposition)!=multi.end()
@@ -242,15 +246,16 @@ void board::updateall(){
     //                    }
     //                }
                 } */
+
     if(inchess->position!=inchess->nextposition){
     updatetimer = new QTimer();
     updatetimer->setInterval(100);
     timer->stop();
     updatetimer->start();
-    connect(updatetimer, SIGNAL(timeout()), newgame->allparty[lastcolor]->ownchess[justclicked], SLOT(move()));
+    connect(updatetimer, SIGNAL(timeout()), newgame->allparty[lastcolor]->ownchess[whichchess], SLOT(move()));
     connect(updatetimer, SIGNAL(timeout()), this, SLOT(updateGL()));
     }
-    if(lastroll!=6){
+    if(numstep!=6){
          if(lastcolor == numplayer-1) lastcolor = 0;
          else lastcolor++;
     }
@@ -258,7 +263,6 @@ void board::updateall(){
     }
     window->button[4]->setEnabled(true);
 }
-
 
 int board::beginroll(){
     return rand() % 6 +1;

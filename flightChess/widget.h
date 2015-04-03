@@ -21,7 +21,7 @@ public:
     int choose;
     game *newgame;
     int numplayer;
-
+    void update(int numcolor, int numstep, int whichchess);
 protected:
     void initializeGL();
     void resizeGL(int width, int height);

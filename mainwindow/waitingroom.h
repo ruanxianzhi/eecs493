@@ -2,6 +2,7 @@
 #define WAITINGROOM_H
 
 #include <QDialog>
+#include <QtWidgets>
 
 namespace Ui {
 class waitingroom;
@@ -22,6 +23,7 @@ public:
     QPushButton *green;
     QPushButton *yellow;
     QPushButton *leave;
+    QTableWidget *tw;
     QFont fnt;
 
 };

@@ -23,7 +23,7 @@ public:
 protected:
     void sendMessage(MessageType type,QString colortype = "");
     void newParticipant(QString userName,QString localHostName,QString ipAddress);
-    void participantLeft(QString userName,QString localHostName,QString time);
+    void participantLeft(QString userName);
 
 private:
     QUdpSocket *udpSocket;
@@ -42,6 +42,7 @@ private slots:
     void choosebluecolor();
     void choosegreencolor();
     void chooseyellowcolor();
+    void leave();
 
 };
 

@@ -20,6 +20,7 @@ waitingroom::waitingroom(QWidget *parent) :
     ui->tableWidget->verticalHeader()->setStyleSheet("QHeaderView::section {background-color :QColor(189,202,242,000);border:none;}");
     ui->tableWidget->verticalHeader()->setVisible(false);
     ui->tableWidget->horizontalHeader()->setVisible(false);
+    tw = ui->tableWidget;
     QFont font = ui->tableWidget->horizontalHeader()->font();
     font.setBold(true);
     //font.setPointSize(80);
@@ -33,7 +34,7 @@ waitingroom::waitingroom(QWidget *parent) :
     leave = ui->pushButton;
     QPalette pal;
     pal.setColor(QPalette::Base, QColor(235,241,184));
-    pal.setBrush(this->backgroundRole(),QBrush(QPixmap("images/tableback.jpg")) );
+    //pal.setBrush(this->backgroundRole(),QBrush(QPixmap("images/tableback.jpg")) );
     pal.setColor(QPalette::AlternateBase, QColor(184,235,241));
     ui->tableWidget->setPalette(pal);
     ui->tableWidget->setFrameShape(QFrame::NoFrame);
