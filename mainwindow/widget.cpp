@@ -79,7 +79,7 @@ void board::draw()
 //------------------------------------------
     glActiveTexture(GL_TEXTURE0);
     glEnable(GL_TEXTURE_2D);
-    bindTexture(QImage("/Users/chuanshunxia/Documents/courses/EECS493/Final project/493final/493_final_v0.7/image/modified.png"));
+    bindTexture(QImage(":/image/modified.png"));
     glBegin(GL_QUADS);
           // Up face (y = 1.0f)
           qglColor(Qt::white);

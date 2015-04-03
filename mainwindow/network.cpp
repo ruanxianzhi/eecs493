@@ -206,6 +206,7 @@ void netWork::chooseredcolor(){
 
             waitingroomPtr->updatelabel(getUserName(),"red");
             sendMessage(Choosecolor,"red");
+            sendMessage(Choosecolor,"red");
             mycolor = "red";
             reduser = getUserName();
             tryStart();
@@ -216,6 +217,7 @@ void netWork::choosebluecolor(){
     //waitingroomPtr->updatelabel(userName,'r');
     if(blueuser == "" && mycolor == ""){
             waitingroomPtr->updatelabel(getUserName(),"blue");
+            sendMessage(Choosecolor,"blue");
             sendMessage(Choosecolor,"blue");
             mycolor = "blue";
             blueuser = getUserName();
@@ -228,6 +230,7 @@ void netWork::choosegreencolor(){
     if (greenuser == "" && mycolor == ""){
              waitingroomPtr->updatelabel(getUserName(),"green");
              sendMessage(Choosecolor,"green");
+             sendMessage(Choosecolor,"green");
              greenuser = getUserName();
              mycolor = "green";
              tryStart();
@@ -238,6 +241,7 @@ void netWork::chooseyellowcolor(){
     //waitingroomPtr->updatelabel(userName,'r');
     if (yellowuser == "" && mycolor == ""){
             waitingroomPtr->updatelabel(getUserName(),"yellow");
+            sendMessage(Choosecolor,"yellow");
             sendMessage(Choosecolor,"yellow");
             yellowuser = getUserName();
             mycolor = "yellow";
@@ -259,7 +263,7 @@ void netWork::joinAgain(){
 }
 
 void netWork::tryStart(){
-    if (reduser!="")
+    if (reduser!="" && blueuser !=""&& greenuser!="" && yellowuser!="")
             gameStart();
 }
 
