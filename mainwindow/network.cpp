@@ -259,7 +259,7 @@ void netWork::joinAgain(){
 }
 
 void netWork::tryStart(){
-    if (reduser!=""&&blueuser!=""&&greenuser!="")
+    if (reduser!="")
             gameStart();
 }
 

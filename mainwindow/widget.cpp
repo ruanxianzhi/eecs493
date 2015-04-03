@@ -9,7 +9,7 @@ extern QTimer *uptimer;
 extern QTimer *updatetimer;
 extern int justclicked;
 
-board::board(int player, QWidget *parent)
+board::board(int player, boardWindow* windowparent,QWidget *parent)
     : QGLWidget(parent)
 {
     setFormat(QGLFormat(QGL::DoubleBuffer | QGL::DepthBuffer));
@@ -22,7 +22,7 @@ board::board(int player, QWidget *parent)
     choose = -1;
     newgame = new game(numplayer,1);
     newgame->init();
-
+    window = windowparent;
     timer = new QTimer();
     timer->setInterval(10000);
     connect(timer, SIGNAL(timeout()), this, SLOT(start()));

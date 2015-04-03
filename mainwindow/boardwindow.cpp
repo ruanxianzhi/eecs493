@@ -15,7 +15,7 @@ boardWindow::boardWindow(QWidget *parent)
     //gameplay number
     countimer = new QTimer();
     countimer->setInterval(1000);
-    board *chessboard = new board(4);
+    board *chessboard = new board(4,this);
 
     splitter->addWidget(chessboard);
 

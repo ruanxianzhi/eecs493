@@ -15,7 +15,7 @@ class board : public QGLWidget
     Q_OBJECT
 
 public:
-    board(int player, QWidget *parent = 0);
+    board(int player, boardWindow* windowparent=0,QWidget *parent = 0);
     boardWindow* window;
     int clicked;
     int choose;
