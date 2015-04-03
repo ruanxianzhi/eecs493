@@ -16,11 +16,23 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     waitingroom.cpp \
-    network.cpp
+    network.cpp \
+    boardwindow.cpp\
+    chess.cpp\
+    game.cpp\
+    party.cpp\
+    widget.cpp
 
 HEADERS  += mainwindow.h \
     waitingroom.h \
-    network.h
+    network.h \
+    boardwindow.h\
+    chess.h\
+    game.h\
+    global.h\
+    party.h\
+    widget.h
+
 FORMS    += mainwindow.ui\
     waitingroom.ui
 RESOURCES += \
