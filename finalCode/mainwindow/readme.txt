@@ -1,0 +1,3 @@
+This is a board game with capacity of four people. There are some issues to run this game.
+1. To connect with different players, you need to use same IP range. In other word, we cannot simply use MWireless to connect with each other unless we are in same IP range. Please use other wifi to keep IP.
+2. There is a bug found in QT: the sound resource cannot play if it is put in QRC. Hence we use path. If you want to hear the music and use our function of setting volume, please put the sound document under the root directory, then un-comment the code in line 17 of mainwindow.cpp.
