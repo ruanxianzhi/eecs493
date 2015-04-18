@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3D Flight Chess</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="shadowbox.css">
+            <script type="text/javascript" src="shadowbox.js"></script>
+            <script type="text/javascript">
+                Shadowbox.init();
+                </script>
+    </head>
+
+    <body>
+        <div id="sidebar">
+            <li><a href="#1" >About Flight Chess</a></li>
+            <li><a href="#2">Getting Started</a></li>
+            <li><a href="#2.1">&nbsp;&nbsp;&nbsp;&nbsp;Game Rules</a></li>
+            <li><a href="#2.2">&nbsp;&nbsp;&nbsp;&nbsp;Setting and Quit</a></li>
+            <li><a href="#2.3">&nbsp;&nbsp;&nbsp;&nbsp;Waiting Room</a></li>
+            <li><a href="#3">Playing the Game</a></li>
+        </div>
+
+        <div id="authors">
+            Created by:&nbsp;&nbsp;&nbsp;&nbsp;Chuanshun Xia, Xianzhi Ruan, Yidi Mu, Yihan Li
+        </div>
+        <div id="content">
+            <h2><a name="1">About Flight Chess</a></h2>
+            <p>
+            Flight Chess is a Chinese cross-and-circle board game. It is similar to the western game of Ludo and the Indian game of Pachisi. Developed in the 20th century.
+            </p>
+            <p>
+            An aeroplane chess game board features 4 homes in each corner. There is a track of 52 spaces circumventing the board and 4 starting bases, each leading from the track to the terminal at the centre of the board. The board is evenly divides between 4 colours. There are also 4 sets of 4 coloured airplane pieces. The colours used are red, yellow, green and blue.
+            </p>
+            <p>
+            For our EECS 493 User Interface Development final project, we decided to
+            recreate the classic Flight Chess game.
+            </p>
+            <hr />
+            <h2><a name="2">Getting Started</a></h2>
+            <p>
+            When the game is first started, the user is shown the main menu (figure 1).
+            The main menu has three options: "Play the Classic Level," "Create a Level,"
+            and "Load a Saved Level".
+            </p>
+            <a href="image/mainwindow.png" rel="shadowbox"><img src="image/mainwindow.png" width="500"/></a>
+            <div class="image-caption">Figure 1: The main menu screen</div>
+            <h3><a name="2.1">Game Rules</a></h3>
+            <p>
+            One to four players each try to get all their own plane pieces from their hangars, located at the corners of the board, into the base of their own color in the center of the board. Each player takes a turn by rolling the dice. On a turn a player may do the following:
+            </p>
+            <li>
+            Taxi a piece out of the home onto the starting base. This can only be done by rolling a 6.
+            </li>
+            <li>
+            Move a piece that's on the starting base to the board, or move a piece on the board clockwise around the track, the number of steps indicated by the dice.
+            </li>
+            <p>
+            Additional rules are:
+            </p>
+            <li>
+            A roll of 6 gives that player another roll.
+            </li>
+            <li>
+            When a player lands on an opponent's piece, the opponent returns that piece to its home.
+            </li>
+            <li>
+            When a plane lands on a space of its own color, it immediately jumps to the next space of its own color. Any opposing planes sitting on that square are sent back to their home.
+            </li>
+            <li>
+            When a plane lands on the shortcut of its own color, it may take the shortcut, and any opposing planes in the end of the shortcut are sent back to their home. This may also by done in succession with a jump leading to shortcut.
+            </li>
+            <li>
+            Plane must fly into the terminal on an exact roll. If a player cannot move pieces into the center base by an exact roll of the die, then they must move their piece backwards according to number rolled.
+            </li>
+            <li>
+            When a plane gets to the terminal, it is placed facedown back in its own hangar, indicating that it is done for the game. The first player to get all of four of their planes to the center of the board wins.
+            </li>
+            <a href="image/rule1.png" rel="shadowbox"><img src="image/rule1.png" width="500"/></a>
+            <div class="image-caption">Figure 2: The rules (1)</div>
+            <a href="image/rule2.png" rel="shadowbox"><img src="image/rule2.png" width="500"/></a>
+            <div class="image-caption">Figure 3: The rules (2)</div>
+            <a href="image/rule3.png" rel="shadowbox"><img src="image/rule3.png" width="500"/></a>
+            <div class="image-caption">Figure 4: The rules (3)</div>
+            <h3><a name="2.2">Setting and Quit</a></h3>
+            <a href="image/setting.png" rel="shadowbox"><img src="image/setting.png" width="500"/></a>
+            <div class="image-caption">Figure 5: The setting screen</div>
+            <a href="image/quit.png" rel="shadowbox"><img src="image/quit.png" width="500"/></a>
+            <div class="image-caption">Figure 6: The quit screen</div>
+            <h3><a name="2.3">Waiting Room</a></h3>
+            <a href="image/waitingroom.png" rel="shadowbox"><img src="image/waitingroom.png" width="500"/></a>
+            <div class="image-caption">Figure 7: The waiting room screen</div>
+            <hr />
+            <h2><a name="3">Playing the Game</a></h2>
+            <a href="image/red.png" rel="shadowbox"><img src="image/red.png" width="500"/></a>
+            <div class="image-caption">Figure 8: The red player screen</div>
+            <a href="image/yellow.png" rel="shadowbox"><img src="image/yellow.png" width="500"/></a>
+            <div class="image-caption">Figure 9: The yellow player screen</div>
+            <a href="image/green.png" rel="shadowbox"><img src="image/green.png" width="500"/></a>
+            <div class="image-caption">Figure 10: The green player screen</div>
+            <a href="image/blue.png" rel="shadowbox"><img src="image/blue.png" width="500"/></a>
+            <div class="image-caption">Figure 11: The blue player screen</div>
+            <a href="image/gray.png" rel="shadowbox"><img src="image/gray.png" width="500"/></a>
+            <div class="image-caption">Figure 12: The bystander screen</div>
+            <a href="image/rotate.png" rel="shadowbox"><img src="image/rotate.png" width="500"/></a>
+            <div class="image-caption">Figure 13: The bystander screen</div>
+            <a href="image/win.png" rel="shadowbox"><img src="image/win.png" width="500"/></a>
+            <div class="image-caption">Figure 14: The ending screen</div>
+            </div>
+    </body>
+</html>
