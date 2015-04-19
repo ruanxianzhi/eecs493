@@ -19,7 +19,7 @@ body {
   text-align: center;
   background-color: #FFFFFF;
   opacity: 0.6;
-  margin: 170px 250px 20px 330px;
+  margin: 170px 235px 20px 315px;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -27,18 +27,17 @@ body {
 }
 
 #content {
-  color: #010252;
+  color: #0D3308;
   background-color: #FFFFFF;
   opacity: 0.9;
-  margin: 20px 250px 20px 330px;
-  padding: 10px 10px 10px 10px;
+  margin: 20px 235px 20px 315px;
+  padding: 10px 25px 10px 25px;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
 
 #sidebar {
-  color: #010252;
   background: #FFFFFF;
   opacity: 0.7;
   margin: 50px 0 0 110px;
@@ -75,19 +74,13 @@ li {
   padding: 10px 10px 10px 10px;
 }
 
-h3.author {
-  text-align: center;
-  margin-top: 0;
-}
-
-h3.create {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: normal;
-}
-
 div.image-caption {
   text-align: center;
+}
+
+audio {
+  display: block;
+  margin: 0 auto;
 }
 
 img {
